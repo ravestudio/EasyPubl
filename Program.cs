@@ -19,9 +19,7 @@ namespace EasyPubl
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>()
-                .UseKestrel(options => {
-                    options.Listen(System.Net.IPAddress.Loopback, 8080);
-                });
+                .UseStartup<Startup>();
+                
     }
 }
