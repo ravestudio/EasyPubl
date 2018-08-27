@@ -17,5 +17,11 @@ export class PostService {
     return this.http.get<Post[]>(this.postsUrl)
   }
 
+  /** GET post by permalink. Will 404 if id not found */
+  getPost(permalink: string): Observable<Post> {
+    const url = `${this.postsUrl}/${permalink}`;
+    return this.http.get<Post>(url);
+  }
+
   constructor(private http: HttpClient) { }
 }

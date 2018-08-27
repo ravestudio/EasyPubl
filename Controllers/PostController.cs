@@ -17,10 +17,27 @@ namespace EasyPubl.Controllers
 
             using(var db = new BloggingContext())
             {
-                posts = db.Posts.ToList();
+                posts = db.Posts.Select(p => new Post() {
+                    PostId = p.PostId, 
+                    Title = p.Title,
+                    Permalink = p.Permalink,
+                    Excerpt = p.Excerpt }).ToList();
             }
 
             return posts;
+        }
+
+        [HttpGet("{permalink}")]
+        public Post GetByPermalink(string permalink)
+        {
+            Post result = null;
+
+            using(var db = new BloggingContext())
+            {
+                result = db.Posts.Single(p => p.Permalink == permalink);
+            }
+
+            return result;
         }
     }
 }
