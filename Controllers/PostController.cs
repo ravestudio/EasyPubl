@@ -21,6 +21,7 @@ namespace EasyPubl.Controllers
                     PostId = p.PostId, 
                     Title = p.Title,
                     Permalink = p.Permalink,
+                    CreateDate = p.CreateDate,
                     Excerpt = p.Excerpt }).ToList();
             }
 
